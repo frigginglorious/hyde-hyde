@@ -4,6 +4,7 @@
 
 {{ define "content" }}
   <div class="post-list">
+    
     {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
     {{ range $paginator.Pages }}
       {{ if .Draft }}
@@ -28,6 +29,7 @@
         {{ if .Truncated }}
           ... <a class="read-more-symbol" href="{{ .RelPermalink }}">➦</a>
         {{ end }}
+        {{.Content}}
         </div>
         {{ .Scratch.Delete "draftPage" }}
      {{ end }}
