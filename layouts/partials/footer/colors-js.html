@@ -1,0 +1,12 @@
+
+{{ $jquery := resources.Get "js/jquery.js" | fingerprint -}}
+<script src="{{ $jquery.RelPermalink }}"></script>
+{{ $KMeans := resources.Get "js/KMeans.js" | fingerprint -}}
+<script src="{{ $KMeans.RelPermalink }}"></script>
+{{ $Octree := resources.Get "js/Octree.js" | fingerprint -}}
+<script src="{{ $Octree.RelPermalink }}"></script>
+{{ $ColorAnalyser := resources.Get "js/ColorAnalyser.js" | fingerprint -}}
+<script src="{{ $ColorAnalyser.RelPermalink }}"></script>
+
+{{ $colors := resources.Get "js/colors.js" | fingerprint -}}
+<script defer src="{{ $colors.RelPermalink }}"></script>
