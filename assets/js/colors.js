@@ -19,6 +19,11 @@ var analyseImage = function(img) {
     //var palette = analyser.getThresholdedPalette(0.6, 128, bgColor, 32);
 
     var colors = palette[0];
+
+    console.log("Colors:");
+    console.log(colors);
+
+
     var numPixels = palette[1];
 
     var textColor = analyser.chooseTextColor(bgColor, colors);
@@ -26,7 +31,7 @@ var analyseImage = function(img) {
 
     $('body').css('color', colorString);
 
-
+    $('.sidebar').css('color', colorString);
 
     $('#colors-top').empty();
     $('#colors-bottom').empty();
