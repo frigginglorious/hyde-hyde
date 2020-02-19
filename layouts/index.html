@@ -3,6 +3,7 @@
 {{ end }}
 
 {{ define "content" }}
+<div class="colors" id="colors-top"></div>
   <div class="post-list">
     
     {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
@@ -40,6 +41,7 @@
     <canvas id="canvas" style="display:none"></canvas>
 
   </div>
+  <div class="colors" id="colors-bottom"></div>
 {{ end }}
 
 

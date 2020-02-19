@@ -2,7 +2,9 @@ var analyseImage = function(img) {
 
     if (!img) {
       img = $('#logo')[0];
+      console.log("found logo");
     } else {
+        console.log("no logo");
       $('#logo').attr('src', $(img).attr('src'));
     }
 
@@ -21,7 +23,7 @@ var analyseImage = function(img) {
     var colors = palette[0];
 
     console.log("Colors:");
-    console.log(colors);
+    console.log(palette);
 
 
     var numPixels = palette[1];
@@ -29,12 +31,19 @@ var analyseImage = function(img) {
     var textColor = analyser.chooseTextColor(bgColor, colors);
     var colorString = 'rgb(' + textColor[0] + ', ' + textColor[1] + ', ' + textColor[2] + ')';
 
-    $('body').css('color', colorString);
+    $('a').css('color', colorString);
 
-    $('.sidebar').css('color', colorString);
+    // $('#sidebar').css('background-color', colorString);
 
     $('#colors-top').empty();
     $('#colors-bottom').empty();
+
+    // setColor('#sidebar', );
+    var r = colors[1][0][0];
+    var g = colors[1][0][1];
+    var b = colors[1][0][2];
+    colorString = "rgb(" + Math.round(r) + "," + Math.round(g) + "," + Math.round(b) + ")";
+    $('#sidebar').css('background-color', colorString);
 
     for (i = 0; i != colors.length; i++) {
       var r = colors[i][0][0];
@@ -50,10 +59,14 @@ var analyseImage = function(img) {
 
       $previewTop.text(count);
       //$preview.text(count);
-      $('#colors-top').append($previewTop);
-      $('#colors-bottom').append($previewBottom);
+      $('#colors-top').append($previewBottom);
+      $('#colors-bottom').append($previewTop);
     }
   };
+
+// function setColor(elem, prop, r, g, b){
+
+// }
 
   var handleNewImage = function(event) {
     event.preventDefault( );
